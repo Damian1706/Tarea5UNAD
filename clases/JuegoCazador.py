@@ -24,10 +24,10 @@ class JuegoCazador:
     def ronda(self):
         """Representa una ronda del juego, gerera una contraseña, la valida, la clasifica
         y asigna un tipo de cofre segun la calidad de la contraseña."""
-
         try:
-            # Pide al usuario la longitud de la congraseña y valida que se un numero valido.
             try:
+                # Pide al usuario la longitud de la congraseña y valida que se un numero valido.
+
                 longitud = int(
                     input("Ingresa la longitud de la contraseña (minimo 8): ")
                 )
@@ -66,10 +66,14 @@ class JuegoCazador:
                     cofre = CofreRaro()
                 elif tipo == "Muy fuerte":
                     cofre = CofreLegendario()
+                else:
+                    cofre = CofreMaldito()
+
             # se captura la excepción ContrasenaInvalidaError y se asigna un cofre maldito al jugador.
             except ContrasenaInvalidaError as e:
                 print("Error:", e)
                 cofre = CofreMaldito()
+
             # de acuerdo al tipo de cofre asigando se abre y suman o restan los puntos.
             puntos = cofre.abrir_cofre()
             print(
